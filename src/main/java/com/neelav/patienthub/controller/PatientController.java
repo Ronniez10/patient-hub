@@ -33,8 +33,8 @@ public class PatientController {
     }
 
     @GetMapping("{id}")
-    public Patient patientById(@PathVariable int id){
-        return  patientService.getPatientById(id);
+    public ResponseEntity<Patient> patientById(@PathVariable int id){
+        return  new ResponseEntity<>(patientService.getPatientById(id),HttpStatus.OK);
     }
 
     @GetMapping("name/{name}")
@@ -44,17 +44,17 @@ public class PatientController {
 
     @PostMapping
     public ResponseEntity<Patient> createPatient(@Valid  @RequestBody Patient patient){
-        return new ResponseEntity<>(patientService.createPatient(patient),HttpStatus.OK);
+        return new ResponseEntity<>(patientService.createPatient(patient),HttpStatus.CREATED);
     }
 
     @PutMapping("{id}")
-    public Patient updatePatient(@PathVariable int id , @RequestBody @Valid Patient patient){
-        return patientService.updatePatient(id,patient);
+    public ResponseEntity<Patient> updatePatient(@PathVariable int id , @RequestBody @Valid Patient patient){
+        return new ResponseEntity<>(patientService.updatePatient(id,patient),HttpStatus.ACCEPTED);
     }
 
 
     @DeleteMapping("{id}")
-    public String removePatient(@PathVariable int id){
-        return patientService.removePatient(id);
+    public ResponseEntity<String> removePatient(@PathVariable int id){
+        return new ResponseEntity<>(patientService.removePatient(id),HttpStatus.OK) ;
     }
 }

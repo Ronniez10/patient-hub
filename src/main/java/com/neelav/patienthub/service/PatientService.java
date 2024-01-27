@@ -27,7 +27,7 @@ public class PatientService {
     @Cacheable(value = "Patient",key = "#id")
     public Patient getPatientById(int id){
         Optional<Patient> optionalPatient = patientRepository.findById(id);
-        return optionalPatient.orElseThrow(() -> new PatientNotFoundException("Patient with id"+id+" does not exist"));
+        return optionalPatient.orElseThrow(() -> new PatientNotFoundException("Patient with id "+id+" does not exist"));
     }
 
 
@@ -39,7 +39,7 @@ public class PatientService {
     @CachePut(value ="Patient", key = "#id")
     public Patient updatePatient(int id,Patient p){
         Optional<Patient> optionalPatient = patientRepository.findById(id);
-        Patient patient = optionalPatient.orElseThrow(() -> new PatientNotFoundException("Patient with id"+id+" does not exist"));
+        Patient patient = optionalPatient.orElseThrow(() -> new PatientNotFoundException("Patient with id "+id+" does not exist"));
         updatePatientData(p,patient);
         return patientRepository.save(patient);
     }

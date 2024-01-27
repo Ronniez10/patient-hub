@@ -30,4 +30,10 @@ public class ExceptionMapper {
 
        return new ResponseEntity<>("Validation errors :"+message,HttpStatus.BAD_REQUEST);
     }
+
+    @ExceptionHandler(PatientNotFoundException.class)
+    public ResponseEntity<String> handlePatientNotFoundException(PatientNotFoundException ex){
+
+        return new ResponseEntity<>(ex.getMessage(),HttpStatus.BAD_REQUEST);
+    }
 }
