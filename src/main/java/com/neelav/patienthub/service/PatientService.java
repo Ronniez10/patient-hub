@@ -53,7 +53,7 @@ public class PatientService {
             patient.setMiddlename(updatedPatient.getMiddlename());
 
         if(!StringUtils.isEmpty(updatedPatient.getLastname()))
-            patient.setMiddlename(updatedPatient.getLastname());
+            patient.setLastname(updatedPatient.getLastname());
 
         if(!StringUtils.isEmpty(updatedPatient.getEmail()))
             patient.setEmail(updatedPatient.getEmail());

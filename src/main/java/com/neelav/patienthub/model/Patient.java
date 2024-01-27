@@ -10,6 +10,7 @@ import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
+import lombok.Builder;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -19,6 +20,7 @@ import static jakarta.persistence.GenerationType.IDENTITY;
 
 @Entity
 @Data
+@Builder
 public class Patient implements Serializable {
 
     private static final long serialVersionUID = 1234567L;
