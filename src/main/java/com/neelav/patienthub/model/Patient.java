@@ -2,6 +2,7 @@ package com.neelav.patienthub.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.neelav.patienthub.exceptions.BloodGroupConstraint;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -10,8 +11,10 @@ import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -21,6 +24,8 @@ import static jakarta.persistence.GenerationType.IDENTITY;
 @Entity
 @Data
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Patient implements Serializable {
 
     private static final long serialVersionUID = 1234567L;
@@ -47,6 +52,7 @@ public class Patient implements Serializable {
 
 
     @Column(nullable = false)
+    @BloodGroupConstraint
     private String bloodgroup;
 
     @JsonIgnore

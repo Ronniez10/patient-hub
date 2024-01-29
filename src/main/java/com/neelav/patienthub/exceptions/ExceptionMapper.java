@@ -26,7 +26,7 @@ public class ExceptionMapper {
            errorList.add(error.getDefaultMessage());
         });
 
-        String message = errorList.stream().collect(Collectors.joining(","));
+        String message = String.join(",", errorList);
 
        return new ResponseEntity<>("Validation errors :"+message,HttpStatus.BAD_REQUEST);
     }
